@@ -24,4 +24,35 @@ declare module u8.Crm.QueryCommand {
         resultSet: u8.Crm.ResultSet
         t: u8.Crm.QueryAssociationMode
     }
+
+    class _ExecuteExportOptions {
+        report: Report
+    }
+
+    interface _ExecuteInBackgroundEventArgs extends u8.Base._EventArgs {
+        error: u8.Base._Error
+        resultsDueAt: Date
+        todoRecordId: string
+    }
+    interface _LoadEventArgs extends u8.Base._EventArgs {
+        error: u8.Base._Error
+    }
+
+    interface _SaveEventArgs extends u8.Base._EventArgs {
+        uri: string
+    }
+
+    interface _LoadOptions {
+        infoAreaId: string
+        isFilter: boolean
+        name: string
+    }
+
+    interface _SaveOptions {
+        associationMode: u8.Crm.QueryAssociationMode
+        isFilter: boolean
+        isPrivate: boolean
+        name: string
+        uri: string
+    }
 }

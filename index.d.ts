@@ -5,6 +5,7 @@
 /// <reference path="./u8/Crm/BusinessObject/BusinessObject.d.ts" />
 /// <reference path="./u8/Crm/QueryCommand/QueryCommand.d.ts" />
 /// <reference path="./u8/Crm/ResultSet/ResultSet.d.ts" />
+/// <reference path="./u8/Crm/QueryStatement/QueryStatement.d.ts" />
 /// <reference path="./u8/Crm/Schema/Schema.d.ts" />
 /// <reference path="./u8/Base/Base.d.ts" />
 /// <reference path="./u8/Base/Templates/Templates.d.ts" />
