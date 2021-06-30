@@ -1,0 +1,19 @@
+{
+  "name": "@types/aureacrm",
+  "version": "1.0.0",
+  "description": "This package contains type definitions for Aurea CRM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sedusstoll/crm_sedus.sd.aureaTypes.git"
+  },
+  "author": "Sedus Stoll AG - Christof Wiederkehr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sedusstoll/crm_sedus.sd.aureaTypes/issues"
+  },
+  "homepage": "https://github.com/sedusstoll/crm_sedus.sd.aureaTypes#readme"
+}
