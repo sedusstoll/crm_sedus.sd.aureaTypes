@@ -288,7 +288,7 @@ declare namespace u8.Crm {
         getRowAt(rowIndex: number): u8.Crm.ResultSet._Row
         getSize(): number
         getTotalNumberOfRows(): number
-        getUidsAt(rowIndex: number, recordIndex: number): _RecordUid | u8.Crm._RecordUid[][]
+        getUidsAt(rowIndex?: number, recordIndex?: number): _RecordUid | u8.Crm._RecordUid[][]
         getUidsRange(fromRow: number, toRow: number, recordIndex: number): _RecordUid[]
         getValue(rowIndex: number, columnIndex: number): object
         indexOfColumn(alias: string, fieldId: number): number
@@ -338,7 +338,7 @@ declare namespace u8.Crm {
     class BusinessObject {
         linked?: IDictionary<string, BusinessObject>[]
         uid: _RecordUid
-        values: object
+        values: any
 
         clear(): void;
         clearModified(fieldId?: number): void;
