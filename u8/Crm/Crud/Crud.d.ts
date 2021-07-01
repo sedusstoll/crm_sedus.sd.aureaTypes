@@ -1,5 +1,5 @@
 /// <reference path="../Crm.d.ts" />
-/// <reference path="../BusinessObject/BusinessObject.d.ts" />
+/// <reference path="../BusinessObjects/BusinessObjects.ts" />
 /// <reference path="../../Base/Request/Request.d.ts" />
 /// <reference path="../../Base/Base.d.ts" />
 
@@ -18,7 +18,7 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _ReadRequest extends _RequestBase {
-        autoLoad?: boolean | u8.Crm.BusinessObject._LoadResourcesOptions,
+        autoLoad?: boolean | u8.Crm.BusinessObjects._LoadResourcesOptions,
         fields: (number | string)[],
         options?: _ReadOptions,
         uid: u8.Crm._RecordUid
@@ -29,7 +29,7 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _UpdateRequest extends _RequestBase {
-        businessObject: u8.Crm.BusinessObject,
+        businessObject: u8.Crm.BusinessObjects,
         fields: _Field[],
         options: _UpdateOptions,
         uid: u8.Crm._RecordUid
@@ -69,7 +69,7 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _ReadLinkedOptions {
-        autoLoad: boolean | u8.Crm.BusinessObject._LoadResourcesOptions,
+        autoLoad: boolean | u8.Crm.BusinessObjects._LoadResourcesOptions,
         fields: number | string,
         infoAreaId: string,
         linkName: string,
@@ -83,7 +83,7 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _EventArgs {
-        businessObject: u8.Crm.BusinessObject,
+        businessObject: u8.Crm.BusinessObjects,
         error: u8.Base._Error
     }
 
@@ -103,7 +103,7 @@ declare namespace u8.Crm.Crud {
 
     interface _BatchResult {
         alias: string,
-        businessObject: BusinessObject,
+        businessObject: BusinessObjects,
         found: boolean,
         type: "create" | "read" | "update" | "delete"
     }

@@ -290,7 +290,7 @@ declare namespace u8.Crm {
         getVersion(): number;
         isFieldModified(fieldId: object): boolean
         isModified(): boolean
-        loadResources(o: boolean | u8.Crm.BusinessObject._LoadResourcesOptions, callback: Function): void;
+        loadResources(o: boolean | u8.Crm.BusinessObjects._LoadResourcesOptions, callback: Function): void;
         set(fieldId: number | string, value: string, markAsModified?: boolean): void;
         setFieldModified(fieldId?: number): void;
         setFieldValue(fieldId: object, value: object): void;
@@ -307,6 +307,27 @@ declare namespace u8.Crm {
         hasDisabledActiveX(): void
         onCreateBrowserPluginFailed(o: object): void
         refreshWorkWindow(): void
+    }
+
+
+    class BusinessObjects {
+        copyUrlToClipboard(uid: _RecordUid): void
+        duplicate(options: u8.Crm.BusinessObjects._DuplicateOptions, callback: (sender: object, args: { uid: _RecordUid }) => void): void
+        executeTrigger(o: u8.Crm.BusinessObjects._ExecuteTriggerRequest, callback: (sender: object, args: object) => void): void
+        executeWorkflow(o: u8.Crm.BusinessObjects._ExecuteWorkflowRequest, callback: (sender: object, args: u8.Crm.BusinessObjects._ExecuteWorkflowResponse) => void): void
+        getUrls(uid: _RecordUid, callback: (sender: object) => void): void
+        processLink(o: u8.Crm.Crud._ReadLinkOptions): void
+        showMenu(o: { uid: _RecordUid, element: any, elEvent: any, parent?: any }): void
+        showQuickView(o: { uid: _RecordUid, element: any, parent: any, elEvent: any, link?: any }): void
+        showUrls(uid: _RecordUid): void
+    }
+
+    interface _Message {
+        fieldId: number
+        infoAreaId: string
+        messageType: string
+        source: string
+        text: string
     }
 
 }
