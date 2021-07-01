@@ -2,9 +2,9 @@
 
 > `npm install --save aureacrmtype`
 
-# Import
+# Use in tsconfig
 
-> `import { u8 } from "aureacrmtype";`
+> `"include": ["node_modules/aureacrmtype"]`
 
 # Summary
 

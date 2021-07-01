@@ -3,8 +3,10 @@
 /// <reference path="./Crud/Crud.d.ts" />
 /// <reference path="./Schema/Schema.d.ts" />
 /// <reference path="./Filter/Filter.d.ts" />
+/// <reference path="./Session/Session.d.ts" />
 /// <reference path="./QueryStatement/QueryStatement.d.ts" />
 /// <reference path="../global.d.ts" />
+/// <reference path="../Base/Base.d.ts" />
 
 declare namespace u8.Crm {
     enum CatalogValueEncoding {
@@ -108,7 +110,7 @@ declare namespace u8.Crm {
         getParameters(nodes: FilterNode[]): FilterNode[]
         hasParameters(): boolean
         isEmpty(): boolean
-        select(outputFields:u8.Crm.QueryStatement._OutputField[]|u8.Crm.QueryStatement._OutputField|string|number): QueryStatement
+        select(outputFields: u8.Crm.QueryStatement._OutputField[] | u8.Crm.QueryStatement._OutputField | string | number): QueryStatement
         setRoot(r: QueryNode): QueryStatement
         toStatementString(o: object): string
 
@@ -295,6 +297,16 @@ declare namespace u8.Crm {
         setFrom(businessObject: BusinessObject, forceFieldValueChangeEvent: boolean): void;
         coerceValue(schema: u8.Crm.Schema.FieldSchema, v: object, bo?: BusinessObject): object
         equalsValue(schema: u8.Crm.Schema.FieldSchema, v1: string, v2: string): boolean
+    }
+
+
+    class Session extends u8.Base.Session {
+        environment: u8.Crm.Session._Environment
+        identity: u8.Crm.Session._Identity
+
+        hasDisabledActiveX(): void
+        onCreateBrowserPluginFailed(o: object): void
+        refreshWorkWindow(): void
     }
 
 }
