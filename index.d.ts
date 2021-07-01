@@ -13,4 +13,8 @@
 /// <reference path="./u8/Base/Request/Queue/Queue.d.ts" />
 /// <reference path="./u8/Base/Widgets/Widgets.d.ts" />
 /// <reference path="./u8/Base/Widgets/MessageBox/MessageBox.d.ts" />
+/// <reference path="./u8/services/services.d.ts" />
 
+export namespace u8{
+
+}
