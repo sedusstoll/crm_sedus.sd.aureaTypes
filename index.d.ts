@@ -7,6 +7,7 @@
 /// <reference path="./u8/Crm/ResultSet/ResultSet.d.ts" />
 /// <reference path="./u8/Crm/Filter/Filter.d.ts" />
 /// <reference path="./u8/Crm/Languages/Languages.d.ts" />
+/// <reference path="./u8/Crm/ListReader/ListReader.d.ts" />
 /// <reference path="./u8/Crm/QueryStatement/QueryStatement.d.ts" />
 /// <reference path="./u8/Crm/Schema/Schema.d.ts" />
 /// <reference path="./u8/Crm/Session/Session.d.ts" />

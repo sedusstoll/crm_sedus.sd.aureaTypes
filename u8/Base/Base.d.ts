@@ -2,6 +2,7 @@
 /// <reference path="./Session/Session.d.ts" />
 /// <reference path="./DateRange/DateRange.d.ts" />
 /// <reference path="./Navigation/Navigation.d.ts" />
+/// <reference path="../Crm/Crm.d.ts" />
 declare namespace u8.Base {
     interface _Error {
         errorUid?: string,
@@ -10,13 +11,12 @@ declare namespace u8.Base {
         type: string
     }
 
-    interface _EventArgs {
-
-    }
+    interface _EventArgs { }
     interface _CancelableEventArgs extends _EventArgs {
         cancel: boolean
     }
 
+    interface _DataProviderEventArgs extends _EventArgs { }
     class Session {
         constructor(o: object)
 
@@ -184,6 +184,10 @@ declare namespace u8.Base {
     interface _DateRange {
         end: Date
         start: Date
+    }
+
+    interface IDataProvider {
+        load(o: u8.Crm.ResultSet._LoadOptions, callback?: (sender: object, args: _DataProviderEventArgs) => void): void
     }
 
 }

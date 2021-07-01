@@ -83,7 +83,7 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _EventArgs {
-        businessObject: u8.Crm.BusinessObjects,
+        businessObject: u8.Crm.BusinessObject,
         error: u8.Base._Error
     }
 

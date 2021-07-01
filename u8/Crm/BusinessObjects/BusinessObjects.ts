@@ -13,15 +13,15 @@ declare namespace u8.Crm.BusinessObjects {
     }
 
     interface _ExecuteTriggerRequest {
-        accessMode: "Scroll" | "New" | "Update" | "Delete" | "Search" | "Edit" | "Close"
-        executionMode: "Default" | "Calculations" | "All"
-        fields: object[]
-        fieldsToCheck: string[]
-        infoAreaId: string
-        links: u8.Crm._LinkRecordUid
-        name: string
-        uid: u8.Crm._RecordUid
-        uids: u8.Crm._RecordUid[]
+        accessMode?: "Scroll" | "New" | "Update" | "Delete" | "Search" | "Edit" | "Close"
+        executionMode?: "Default" | "Calculations" | "All"
+        fields?: object[]
+        fieldsToCheck?: string[]
+        infoAreaId?: string
+        links?: u8.Crm._LinkRecordUid
+        name?: string
+        uid?: u8.Crm._RecordUid
+        uids?: u8.Crm._RecordUid[]
     }
 
     interface _ExecuteWorkflowRequest {

@@ -5,6 +5,7 @@
 /// <reference path="./Filter/Filter.d.ts" />
 /// <reference path="./Session/Session.d.ts" />
 /// <reference path="./QueryStatement/QueryStatement.d.ts" />
+/// <reference path="./ListReader/ListReader.d.ts" />
 /// <reference path="../global.d.ts" />
 /// <reference path="../Base/Base.d.ts" />
 
@@ -240,22 +241,84 @@ declare namespace u8.Crm {
 
 
 
-    interface ResultSet {
+    class ResultSet implements u8.Base.IDataProvider {
+        constructor(o: object)
+
         autoload: u8.Crm.ResultSet._AutoLoadOptions
-        autoRefresh: boolean
-        catalogValueEncoding: string
         columns: u8.Crm.ResultSet._Column[]
-        id: string
-        numberOfRows: string
-        query: any
+        dataProvider: u8.Base.IDataProvider
         moreRowsExist: boolean
         recordsPerRow: u8.Crm.ResultSet._RowRecord[]
         rootAlias: string
         rows: u8.Crm.ResultSet._Row[]
         saveProvider: any
-        sortFields: any
-        _isLoaded: boolean
-        _raiseEvents: boolean
+        skipRows: number
+
+
+        bind(event: "onLoad" | "onPreLoad", callback: (sender: object, args: u8.Base._EventArgs) => void): void
+        bind(event: "onPreAutoRefresh", callback: (sender: object, args: u8.Crm.ResultSet._AutoRefreshEventArgs) => void): void
+        bind(event: "onUpdate", callback: (sender: object, args: u8.Crm.ResultSet._UpdateEventArgs) => void): void
+        bind(event: "onValueChange", callback: (sender: object, args: u8.Crm.ResultSet._ValueChangeArgs) => void): void
+
+        aliasToInfoAreaId(alias: string): string
+        apply(rs: u8.Crm.ResultSet._BuildTotalsRowOptions, callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        buildTotalsRow(o): u8.Crm.ResultSet._Row
+        canEdit(): boolean
+        canLoad(): boolean
+        canLoadMore(): boolean
+        canNext(): boolean
+        canPrev(): boolean
+        clear(): void
+        clone(o: u8.Crm.ResultSet._CloneOptions): ResultSet
+        containsInfoAreaId(infoAreaId: string): boolean
+        countRows(callback: (provider: ListDataProvider, o: object) => void): void
+        dispose(): void
+        eachRowContainingUid(uid: _RecordUid, fn: (sender: object, args: number) => boolean): ResultSet
+        findRowsContainingUid(uid: _RecordUid): u8.Crm.ResultSet._Row[]
+        getColumnAt(columnIndex: number): u8.Crm.ResultSet._Column
+        getColumns(): u8.Crm.ResultSet._Column[]
+        getCurrentSize(): number
+        getFirstRow(): number
+        getLastRow(): number
+        getNumberOfRows(): number
+        getOwner(): any
+        getRightsAt(rowIndex: number, alias?: string, fieldId?: number): object
+        getRightsAtCell(rowIndex: number, columnIndex: number): object
+        getRightsAtColumn(rowIndex: number, alias: string, columnIndex: number): object
+        getRowAt(rowIndex: number): u8.Crm.ResultSet._Row
+        getSize(): number
+        getTotalNumberOfRows(): number
+        getUidsAt(rowIndex: number, recordIndex: number): _RecordUid | u8.Crm._RecordUid[][]
+        getUidsRange(fromRow: number, toRow: number, recordIndex: number): _RecordUid[]
+        getValue(rowIndex: number, columnIndex: number): object
+        indexOfColumn(alias: string, fieldId: number): number
+        indexOfRecord(alias: string): number
+        infoAreaIdToAlias(infoAreaId: string, linkId: string): string
+        insertRowsAt(at: number, rows: u8.Crm.ResultSet._Row, callback?: (sender: object, args: u8.Base._DataProviderEventArgs) => void): void
+        isColumnEditable(columnIndex: number): boolean
+        isEmpty(): boolean
+        isInitial(): boolean
+        isLoaded(): boolean
+        isLoading(): boolean
+        isModified(rowIndex: number, columnIndex?: number): boolean
+        load(o: u8.Crm.ResultSet._LoadOptions, callback?: (sender: object, args: u8.Base._DataProviderEventArgs) => void): void
+        loadCatalogs(callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        loadRecord(uid: _RecordUid, callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        loadReps(callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        loadResources(callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        loadSchema(callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        markAsUnmodified(rowIndex: number): void
+        merge(rs: ResultSet, o?: u8.Crm.ResultSet._MergeOptions, callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        mergeConditionalRights(newRights: object): void
+        removeAllRows(callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        removeRowAt(rowIndex: number, callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        removeRows(predicate: (row: u8.Crm.ResultSet._Row) => boolean, callback?: (sender: object, args: u8.Base._EventArgs) => void): void
+        setColumnOrder(order: number[]): void
+        setUidAt(rowIndex: number, recordIndex: number | string, value: _RecordUid): void
+        setValue(rowIndex: number, columnIndex: number, value: object): void
+        toBusinessObject(row: number, alias?: string): BusinessObject
+        toObject(): object
+        toRecordSet(recordSet: object, o: u8.Crm.ResultSet._ToRecordSetOptions): void
     }
 
     class Crud {
@@ -328,6 +391,31 @@ declare namespace u8.Crm {
         messageType: string
         source: string
         text: string
+    }
+
+    class ListDataProvider implements u8.Base.IDataProvider {
+        constructor(o: object)
+
+        maxRowsMin: number
+        reader: ListReader
+
+        countRows(callback: (provider: ListDataProvider, o: object) => void): void
+        load(o: u8.Crm.ResultSet._LoadOptions, callback?: (sender: object, args: u8.Base._DataProviderEventArgs) => void): void
+    }
+
+    class ListReader {
+        arguments: u8.Crm.ListReader._Arguments
+        endPoint: string | object
+
+        countRows(callback: (provider: ListDataProvider, o: object) => void): void
+        execute(callback: (sender: object) => void): void
+    }
+
+    interface FieldFilter {
+        compareOperator: "=" | ">" | ">=" | "<" | "<="
+        fieldId: number
+        infoAreaId: string
+        value: object
     }
 
 }
