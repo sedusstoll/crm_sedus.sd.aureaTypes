@@ -1,5 +1,6 @@
 /// <reference path="../Crm.d.ts" />
 /// <reference path="../../Base/Base.d.ts" />
+/// <reference path="../../Base/Reporting/Reporting.d.ts" />
 
 declare module u8.Crm.QueryCommand {
 
@@ -26,7 +27,7 @@ declare module u8.Crm.QueryCommand {
     }
 
     class _ExecuteExportOptions {
-        report: Report
+        report: u8.Base.Reporting.Report
     }
 
     interface _ExecuteInBackgroundEventArgs extends u8.Base._EventArgs {
