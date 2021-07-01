@@ -1,6 +1,6 @@
 declare namespace u8.Crm.QueryStatement {
     interface _OutputField {
-        alias: string,
+        alias?: string,
         fieldId: number
     }
 

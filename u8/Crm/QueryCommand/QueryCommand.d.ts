@@ -43,9 +43,9 @@ declare module u8.Crm.QueryCommand {
     }
 
     interface _LoadOptions {
-        infoAreaId: string
-        isFilter: boolean
-        name: string
+        infoAreaId?: string
+        isFilter?: boolean
+        name?: string
     }
 
     interface _SaveOptions {

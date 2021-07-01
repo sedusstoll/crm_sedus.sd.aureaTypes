@@ -69,7 +69,7 @@ declare namespace u8.Crm {
         parameters: object
         queryLookupScope: string
         skipRows: number
-        statement: string | QueryStatement
+        statement: QueryStatement
         error?: { message: string; }
         virtualInfoAreaReadMode: string
 
@@ -78,6 +78,7 @@ declare namespace u8.Crm {
         canExecute(): boolean
         clone(): QueryCommand
         dispose(): void
+        execute(callback: (sender: object, args: u8.Crm.QueryCommand._ExecuteEventArgs) => void): void
         execute(o: u8.Crm.QueryCommand._ExecuteOptions, callback: (sender: object, args: u8.Crm.QueryCommand._ExecuteEventArgs) => void): void
         executeExport(o: u8.Crm.QueryCommand._ExecuteExportOptions, callback?: (sender: object, sender2: object) => void): void
         executeInBackground(o: u8.Crm.QueryCommand._ExecuteOptions, callback?: (sender: object, args: u8.Crm.QueryCommand._ExecuteInBackgroundEventArgs) => void): void
@@ -107,7 +108,7 @@ declare namespace u8.Crm {
         getParameters(nodes: FilterNode[]): FilterNode[]
         hasParameters(): boolean
         isEmpty(): boolean
-        select(): QueryStatement
+        select(outputFields:u8.Crm.QueryStatement._OutputField[]|u8.Crm.QueryStatement._OutputField|string|number): QueryStatement
         setRoot(r: QueryNode): QueryStatement
         toStatementString(o: object): string
 
