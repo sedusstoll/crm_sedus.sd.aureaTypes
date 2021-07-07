@@ -58,6 +58,7 @@ declare namespace u8.Crm {
         skipRows?: number
         statement: string
         virtualInfoAreaReadMode?: string
+        countRows?: boolean
     }
 
     class QueryCommand {
@@ -81,13 +82,13 @@ declare namespace u8.Crm {
         canExecute(): boolean
         clone(): QueryCommand
         dispose(): void
-        execute(callback: (sender: object, args: u8.Crm.QueryCommand._ExecuteEventArgs) => void): void
-        execute(o: u8.Crm.QueryCommand._ExecuteOptions, callback: (sender: object, args: u8.Crm.QueryCommand._ExecuteEventArgs) => void): void
+        execute(callback: (sender: object, args: u8.Crm.QueryResult) => void): void
+        execute(o: u8.Crm.QueryCommand._ExecuteOptions, callback: (sender: object, args: u8.Crm.QueryResult) => void): void
         executeExport(o: u8.Crm.QueryCommand._ExecuteExportOptions, callback?: (sender: object, sender2: object) => void): void
         executeInBackground(o: u8.Crm.QueryCommand._ExecuteOptions, callback?: (sender: object, args: u8.Crm.QueryCommand._ExecuteInBackgroundEventArgs) => void): void
         getStatementString(o: object): string
         isLoaded(): boolean
-        load(o: u8.Crm.QueryCommand._LoadOptions, callback: (sender: object, args: u8.Crm.QueryCommand._LoadEventArgs) => void): void
+        load(o: u8.Crm.QueryCommand._LoadOptions, callback: (sender: QueryCommand, args: u8.Crm.QueryCommand._LoadEventArgs) => void): void
         loadFilter(o: u8.Crm.QueryCommand._LoadOptions, callback: (sender: object, args: u8.Crm.QueryCommand._LoadEventArgs) => void): void
         save(o: u8.Crm.QueryCommand._SaveOptions, callbac: (sender: object, args: u8.Crm.QueryCommand._SaveEventArgs) => void): void
         saveFilter(o: u8.Crm.QueryCommand._SaveOptions, callbac: (sender: object, args: u8.Crm.QueryCommand._SaveEventArgs) => void): void
@@ -322,15 +323,15 @@ declare namespace u8.Crm {
     }
 
     class Crud {
-        create(o: u8.Crm.Crud._CreateRequest, callback: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
-        delete_(o: u8.Crm.Crud._DeleteRequest, callback: (sender: object, args: u8.Crm.Crud._DeleteEventArgs) => any): void;
-        executeBatch(o: u8.Crm.Crud._DeleteRequest, callback: (sender: object, args: u8.Crm.Crud._DeleteEventArgs) => any): void;
+        create(o: u8.Crm.Crud._CreateRequest, callback?: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
+        delete_(o: u8.Crm.Crud._DeleteRequest, callback?: (sender: object, args: u8.Crm.Crud._DeleteEventArgs) => any): void;
+        executeBatch(o: u8.Crm.Crud._ExecuteBatchRequest, callback?: (sender: object, args: u8.Crm.Crud._ExecuteBatchEventArgs) => any): void;
         getUidFromEventArgs(args: u8.Crm.Crud._EventArgs): void;
         notify(operation: "Create" | "Read" | "Update" | "Delete", args: u8.Crm.Crud._EventArgs): void;
-        read(o: u8.Crm.Crud._ReadRequest, callback: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
-        readFields(o: u8.Crm.Crud._ReadFieldRequest, callback: (sender: object, args: u8.Crm.Crud._ReadFieldsEventArgs) => any): void;
-        readLink(o: u8.Crm.Crud._ReadLinkOptions, callback: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
-        update(o: u8.Crm.Crud._UpdateRequest, callback: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
+        read(o: u8.Crm.Crud._ReadRequest, callback?: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
+        readFields(o: u8.Crm.Crud._ReadFieldRequest, callback?: (sender: object, args: u8.Crm.Crud._ReadFieldsEventArgs) => any): void;
+        readLink(o: u8.Crm.Crud._ReadLinkOptions, callback?: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
+        update(o: u8.Crm.Crud._UpdateRequest, callback?: (sender: object, args: u8.Crm.Crud._EventArgs) => any): void;
         static buildMessages(crudArgs: u8.Crm.Crud._ExecuteBatchEventArgs): u8.Crm.Crud._CrudMessage[]
         static buildSaveMessage(crudSaveArgs: IDictionary<string, object>): string
     }
@@ -345,7 +346,7 @@ declare namespace u8.Crm {
         clone(): BusinessObject
         dispose(): void;
         get(fieldId: number | string): string
-        getFieldValue(fieldId: object);
+        getFieldValue(fieldId: number):any;
         getLinkFieldUid(fieldId: number): _RecordUid;
         getLinkedBusinessObject(alias: string): BusinessObject;
         getModifiedFieldIds(): number[];

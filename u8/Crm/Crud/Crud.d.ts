@@ -29,9 +29,9 @@ declare namespace u8.Crm.Crud {
     }
 
     interface _UpdateRequest extends _RequestBase {
-        businessObject: u8.Crm.BusinessObjects,
+        businessObject?: u8.Crm.BusinessObjects,
         fields: _Field[],
-        options: _UpdateOptions,
+        options?: _UpdateOptions,
         uid: u8.Crm._RecordUid
     }
 
