@@ -1,5 +1,5 @@
 {
-  "name": "aureacrmtype",
+  "name": "@sedusstoll/aureacrmtype",
   "version": "1.0.7",
   "description": "This package contains type definitions for Aurea CRM",
   "main": "index.d.ts",
